@@ -52,9 +52,6 @@ To get a local copy up and running, follow these simple steps.
 ## 🤝 The Core Team
 
 - **V Aakash Kumar** - Founder & CEO
-- **Bhavya** - Co-Founder & CTO
-- **Loki** - Co-Founder & CMO
-- **Prasath** - Co-Founder & COO
 
 *Backed by a growing team of dedicated developers, designers, and innovators.*
 
