@@ -1,0 +1,6 @@
+{
+  "name": "CodeFluxz",
+  "description": "A premium dark-themed AI company landing page featuring cinematic scroll-driven laptop open animations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
