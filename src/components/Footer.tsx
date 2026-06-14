@@ -187,15 +187,15 @@ export default function Footer() {
         <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-0" />
         
         {/* Top section */}
-        <div className="absolute top-0 left-0 w-full p-8 md:p-12 flex justify-between items-start z-10 pointer-events-none">
-          <div className="flex flex-col gap-6 pointer-events-auto">
-            <p className="font-sans font-light text-black text-sm md:text-base max-w-[250px] leading-snug">
+        <div className="absolute top-0 left-0 w-full p-6 md:p-12 flex justify-between items-start z-10 pointer-events-none">
+          <div className="flex flex-col gap-4 md:gap-6 pointer-events-auto">
+            <p className="font-sans font-light text-black text-[11px] md:text-base max-w-[140px] md:max-w-[250px] leading-snug">
               Building the trust and opportunity layer<br />for the AI-powered future.
             </p>
             <a 
               href="#contact" 
               onClick={(e) => { e.preventDefault(); setIsContactOpen(true); }}
-              className="bg-[#1f1f1f] text-white rounded-md px-6 py-2.5 text-sm md:text-base w-fit hover:bg-white hover:text-black transition-colors duration-300 font-medium pointer-events-auto"
+              className="bg-[#1f1f1f] text-white rounded-md px-4 md:px-6 py-2 md:py-2.5 text-[11px] md:text-base w-fit hover:bg-white hover:text-black transition-colors duration-300 font-medium pointer-events-auto"
               onMouseEnter={() => setIsHoveringLink(true)}
               onMouseLeave={() => setIsHoveringLink(false)}
               style={{ cursor: 'none' }}
@@ -204,7 +204,7 @@ export default function Footer() {
             </a>
           </div>
           
-          <div className="flex flex-col items-end gap-1.5 font-light text-[13px] md:text-[15px] pointer-events-auto tracking-wide">
+          <div className="flex flex-col items-end gap-1.5 font-light text-[11px] md:text-[15px] pointer-events-auto tracking-wide">
             <a href="#" className="hover:opacity-60 transition-opacity" onMouseEnter={() => setIsHoveringLink(true)} onMouseLeave={() => setIsHoveringLink(false)} style={{ cursor: 'none' }}>Customer support</a>
             <a href="#" className="hover:opacity-60 transition-opacity" onMouseEnter={() => setIsHoveringLink(true)} onMouseLeave={() => setIsHoveringLink(false)} style={{ cursor: 'none' }}>Privacy policy</a>
             <a href="#" className="hover:opacity-60 transition-opacity" onMouseEnter={() => setIsHoveringLink(true)} onMouseLeave={() => setIsHoveringLink(false)} style={{ cursor: 'none' }}>Terms of service</a>
@@ -223,7 +223,7 @@ export default function Footer() {
             <img src="/headerlogo.png" alt="Header Logo" className="h-7 md:h-10 object-contain rounded-lg" />
           </a>
           <button 
-            className="bg-[#1f1f1f] text-white px-5 py-2.5 text-sm md:text-base rounded-md flex items-center gap-2 hover:bg-white hover:text-black transition-colors duration-300 font-medium pointer-events-auto"
+            className="bg-[#1f1f1f] text-white px-4 md:px-5 py-2 md:py-2.5 text-[11px] md:text-base rounded-md flex items-center gap-2 hover:bg-white hover:text-black transition-colors duration-300 font-medium pointer-events-auto"
             onMouseEnter={() => setIsHoveringLink(true)}
             onMouseLeave={() => setIsHoveringLink(false)}
             style={{ cursor: 'none' }}
@@ -234,8 +234,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 flex justify-between items-end z-10 pointer-events-none">
-          <div className="flex gap-3 pointer-events-auto">
+        <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 flex justify-between items-end z-10 pointer-events-none">
+          <div className="flex gap-2 md:gap-3 pointer-events-auto">
             {socialLinks.map((social, idx) => {
               const Icon = social.icon;
               return (
@@ -244,7 +244,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-8 h-8 md:w-10 md:h-10 bg-[#1f1f1f] text-white hover:bg-white hover:text-black transition-colors duration-300 flex items-center justify-center rounded-md"
+                  className="w-7 h-7 md:w-10 md:h-10 bg-[#1f1f1f] text-white hover:bg-white hover:text-black transition-colors duration-300 flex items-center justify-center rounded-md"
                   onMouseEnter={() => setIsHoveringLink(true)}
                   onMouseLeave={() => setIsHoveringLink(false)}
                   style={{ cursor: 'none' }}
@@ -256,7 +256,7 @@ export default function Footer() {
             })}
           </div>
           
-          <div className="flex flex-col items-end gap-1.5 font-light text-[13px] md:text-[15px] pointer-events-auto tracking-wide">
+          <div className="flex flex-col items-end gap-1.5 font-light text-[11px] md:text-[15px] pointer-events-auto tracking-wide">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 

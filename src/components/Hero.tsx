@@ -300,19 +300,19 @@ export default function Hero() {
             style={{ opacity: 0 }}
           >
             {/* The UI Block */}
-            <div className="flex flex-col gap-[1.5vh] w-[35vw] text-[#00ff00] font-sans font-light tracking-wide">
+            <div className="flex flex-col gap-[1.5vh] w-[80vw] md:w-[35vw] text-[#00ff00] font-sans font-light tracking-wide">
               
               {/* Top Bar */}
-              <div className="flex justify-between items-center text-[1.2vw] md:text-[0.9vw]">
+              <div className="flex justify-between items-center text-[10px] sm:text-[12px] md:text-[0.9vw]">
                 <div className="flex gap-3">
                   <span>12:08</span>
                   <span>codefluxz</span>
                 </div>
                 <div className="flex items-center gap-2">
                   {/* Cloud icon */}
-                  <svg width="1vw" height="1vw" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 19c2.485 0 4.5-2.015 4.5-4.5 0-2.313-1.745-4.226-4-4.474V10c0-3.314-2.686-6-6-6s-6 2.686-6 6v.026c-2.255.248-4 2.161-4 4.474C2 17.485 4.015 19.5 6.5 19h11z"/></svg>
+                  <svg className="w-3 h-3 md:w-[1vw] md:h-[1vw]" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 19c2.485 0 4.5-2.015 4.5-4.5 0-2.313-1.745-4.226-4-4.474V10c0-3.314-2.686-6-6-6s-6 2.686-6 6v.026c-2.255.248-4 2.161-4 4.474C2 17.485 4.015 19.5 6.5 19h11z"/></svg>
                   {/* Battery icon */}
-                  <div className="w-[1.6vw] h-[0.7vw] border border-[#00ff00] rounded-[2px] p-[1px] relative flex items-center">
+                  <div className="w-5 h-2.5 md:w-[1.6vw] md:h-[0.7vw] border border-[#00ff00] rounded-[2px] p-[1px] relative flex items-center">
                     <div className="bg-[#00ff00] h-full w-[69%] rounded-[1px]"></div>
                     <div className="absolute -right-[2px] h-[40%] w-[1px] bg-[#00ff00]"></div>
                   </div>
@@ -321,18 +321,18 @@ export default function Hero() {
               </div>
 
               {/* Title Box */}
-              <div className="self-end border border-[#00ff00] rounded-lg px-[1.2vw] py-[0.5vh] mt-[1vh]">
-                <span ref={titleRef} className="text-[1.2vw] md:text-[0.9vw]">Enimi</span>
+              <div className="self-end border border-[#00ff00] rounded-lg px-2 py-1 md:px-[1.2vw] md:py-[0.5vh] mt-[1vh]">
+                <span ref={titleRef} className="text-[10px] sm:text-[12px] md:text-[0.9vw]">Enimi</span>
               </div>
 
               {/* Description */}
-              <div ref={descRef} className="text-[1.2vw] md:text-[0.9vw] leading-relaxed text-left">
+              <div ref={descRef} className="text-[10px] sm:text-[12px] md:text-[0.9vw] leading-relaxed text-left">
                 Enimi is an AI-powered platform that detects whether text, images, or videos are AI-generated or manipulated. It provides authenticity scores and insights, helping businesses and individuals make trusted decisions in the age of AI.
               </div>
 
               {/* Bottom Bar */}
-              <div className="flex justify-between items-center text-[1.2vw] md:text-[0.9vw] mt-[1vh]">
-                <div className="border border-[#00ff00] rounded-full px-[1.5vw] py-[0.4vh]">Answer</div>
+              <div className="flex justify-between items-center text-[10px] sm:text-[12px] md:text-[0.9vw] mt-[1vh]">
+                <div className="border border-[#00ff00] rounded-full px-2 py-1 md:px-[1.5vw] md:py-[0.4vh]">Answer</div>
                 <div>Recap</div>
                 <div>Fact Check</div>
               </div>

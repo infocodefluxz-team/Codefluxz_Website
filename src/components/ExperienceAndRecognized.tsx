@@ -102,7 +102,8 @@ export default function ExperienceAndRecognized() {
 
         {/* Expanding Accordion Gallery */}
         <div
-          className="flex justify-center items-end gap-4 md:gap-6 lg:gap-8 w-full h-[460px] px-4 pb-20 pt-10"
+          className="flex justify-start md:justify-center items-end gap-4 md:gap-6 lg:gap-8 w-full h-[460px] px-4 pb-20 pt-10 overflow-x-auto snap-x"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           onMouseLeave={() => setHoveredIdx(4)}
         >
           {team.map((member, idx) => {
@@ -112,7 +113,8 @@ export default function ExperienceAndRecognized() {
               <motion.div
                 key={idx}
                 onMouseEnter={() => setHoveredIdx(idx)}
-                className="relative cursor-pointer shrink-0"
+                onClick={() => setHoveredIdx(idx)}
+                className="relative cursor-pointer shrink-0 snap-center md:snap-align-none"
                 initial={false}
                 animate={{
                   width: isHovered ? 260 : 110,

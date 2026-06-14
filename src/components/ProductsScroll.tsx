@@ -146,14 +146,14 @@ export function ProductScrollSection({
     <div className="bg-white min-h-screen text-[#1a1a1a] font-sans overflow-hidden selection:bg-[#ff5533] selection:text-white">
 
       {/* Main Scroll Container */}
-      <div ref={containerRef} className="h-screen w-full relative flex">
+      <div ref={containerRef} className="h-screen w-full relative flex flex-col md:flex-row pt-24 md:pt-0 pb-10 md:pb-0">
         
         {/* LEFT COLUMN: Headings Only */}
-        <div className="w-[35%] h-full flex flex-col justify-center pl-20 relative z-20">
+        <div className="w-full md:w-[35%] h-[40%] md:h-full flex flex-col justify-center px-6 md:pl-20 md:px-0 relative z-20">
           
           {[0, 1, 2, 3].map(i => (
-            <div key={i} ref={(el) => addToTextRefs(el, i)} className="absolute top-1/2 -translate-y-1/2 left-20 right-0 invisible pointer-events-auto group cursor-default">
-              <h1 className="text-5xl font-medium text-[#1a1a1a] leading-tight tracking-tight transition-colors duration-300">
+            <div key={i} ref={(el) => addToTextRefs(el, i)} className="absolute top-1/2 -translate-y-1/2 left-6 right-6 md:left-20 md:right-0 invisible pointer-events-auto group cursor-default">
+              <h1 className="text-3xl md:text-5xl font-medium text-[#1a1a1a] leading-tight tracking-tight transition-colors duration-300">
                 {h[i].line1} <br />
                 <span className="text-[#999] transition-colors duration-300 group-hover:text-[#ff5533]">{h[i].line2}</span>
                 {h[i].line3 && (
@@ -167,14 +167,14 @@ export function ProductScrollSection({
           ))}
 
           {/* Phase 5 Text with the requested Black Bar */}
-          <div ref={(el) => addToTextRefs(el, 4)} className="absolute top-1/2 -translate-y-1/2 left-20 right-0 invisible pointer-events-auto group cursor-default flex items-stretch gap-6">
+          <div ref={(el) => addToTextRefs(el, 4)} className="absolute top-1/2 -translate-y-1/2 left-6 right-6 md:left-20 md:right-0 invisible pointer-events-auto group cursor-default flex items-stretch gap-4 md:gap-6">
             <div className="w-1.5 bg-[#1a1a1a] rounded-full shrink-0"></div>
             <div>
-              <h1 className="text-6xl font-medium text-[#1a1a1a] mb-4 leading-tight tracking-tight transition-colors duration-300">
+              <h1 className="text-4xl md:text-6xl font-medium text-[#1a1a1a] mb-2 md:mb-4 leading-tight tracking-tight transition-colors duration-300">
                 Meet <br />
                 <span className="text-[#ff5533]">{productName}</span>
               </h1>
-              <p className="text-gray-600 text-xl leading-relaxed max-w-md transition-colors duration-300 group-hover:text-[#1a1a1a]">
+              <p className="text-gray-600 text-base md:text-xl leading-relaxed max-w-md transition-colors duration-300 group-hover:text-[#1a1a1a]">
                 {desc}
               </p>
             </div>
@@ -183,7 +183,7 @@ export function ProductScrollSection({
         </div>
 
         {/* CENTER COLUMN: Images & Pins */}
-        <div className="w-[55%] h-full flex items-center justify-center relative">
+        <div className="w-full md:w-[55%] h-[60%] md:h-full flex items-center justify-center relative">
           <div className="relative w-full h-full max-w-3xl flex items-center justify-center">
             
             {/* Wireframes (Phases 1-4) */}
@@ -202,7 +202,7 @@ export function ProductScrollSection({
             {/* Pin 1 - Top Right (Line goes left, then down) */}
             <div 
               ref={(el) => addToPinRefs(el, 0)} 
-              className="absolute top-[10%] -right-[5%] bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute top-[-5%] sm:top-[10%] right-[-10%] sm:-right-[5%] scale-[0.6] sm:scale-100 origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-start gap-3">
                 <div className="mt-1 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -225,7 +225,7 @@ export function ProductScrollSection({
             {/* Pin 2 - Bottom Right (Line goes left, then up) */}
             <div 
               ref={(el) => addToPinRefs(el, 1)} 
-              className="absolute bottom-[10%] -right-[5%] bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute bottom-[-5%] sm:bottom-[10%] right-[-10%] sm:-right-[5%] scale-[0.6] sm:scale-100 origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-start gap-3">
                 <div className="mt-1 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -249,7 +249,7 @@ export function ProductScrollSection({
             {/* Pin 3 - Bottom Right (Line goes left, then up) */}
             <div 
               ref={(el) => addToPinRefs(el, 2)} 
-              className="absolute bottom-[10%] -right-[5%] bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute bottom-[-5%] sm:bottom-[10%] right-[-10%] sm:-right-[5%] scale-[0.6] sm:scale-100 origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-start gap-3 mb-3">
                 <div className="mt-0.5 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -294,7 +294,7 @@ export function ProductScrollSection({
             {/* Pin 4 - Bottom Right (Line goes left, then up) */}
             <div 
               ref={(el) => addToPinRefs(el, 3)} 
-              className="absolute bottom-[10%] -right-[5%] bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-56 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute bottom-[-5%] sm:bottom-[10%] right-[-10%] sm:-right-[5%] scale-[0.6] sm:scale-100 origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-56 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-center gap-2 mb-2">
                  <div className="bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -344,7 +344,7 @@ export function ProductScrollSection({
         </div>
 
         {/* RIGHT COLUMN: Navigation Tabs */}
-        <div className="w-[10%] h-full flex flex-col justify-center items-end pr-10 relative z-20">
+        <div className="hidden md:flex w-[10%] h-full flex-col justify-center items-end pr-10 relative z-20">
            <div className="flex flex-col items-end gap-4 relative right-[-1px] h-[400px]">
              <div 
                ref={progressLineRef}
