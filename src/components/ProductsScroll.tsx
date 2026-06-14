@@ -202,7 +202,7 @@ export function ProductScrollSection({
             {/* Pin 1 - Top Right (Line goes left, then down) */}
             <div 
               ref={(el) => addToPinRefs(el, 0)} 
-              className="absolute top-[85%] md:top-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-[0.85] md:scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute top-[80%] md:top-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-[90vw] max-w-[340px] md:w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-start gap-3">
                 <div className="mt-1 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -216,7 +216,14 @@ export function ProductScrollSection({
                   )}
                 </p>
               </div>
-              <div className="absolute top-1/2 -left-[80px] w-[80px] h-[1px] bg-[#ff5533]">
+              
+              {/* Mobile Line */}
+              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[40px] bg-[#ff5533]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff5533] -translate-y-1/2"></div>
+              </div>
+              
+              {/* Desktop Line */}
+              <div className="hidden md:block absolute top-1/2 -left-[80px] w-[80px] h-[1px] bg-[#ff5533]">
                 <div className="absolute left-0 top-0 w-[1px] h-[80px] bg-[#ff5533]"></div>
                 <div className="absolute left-[-2.5px] top-[80px] w-1.5 h-1.5 rounded-full bg-[#ff5533]"></div>
               </div>
@@ -225,7 +232,7 @@ export function ProductScrollSection({
             {/* Pin 2 - Bottom Right (Line goes left, then up) */}
             <div 
               ref={(el) => addToPinRefs(el, 1)} 
-              className="absolute top-[85%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-[0.85] md:scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute top-[80%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-[90vw] max-w-[340px] md:w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-start gap-3">
                 <div className="mt-1 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -240,7 +247,14 @@ export function ProductScrollSection({
                   )}
                 </p>
               </div>
-              <div className="absolute top-1/2 -left-[80px] w-[80px] h-[1px] bg-[#ff5533]">
+              
+              {/* Mobile Line */}
+              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[40px] bg-[#ff5533]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff5533] -translate-y-1/2"></div>
+              </div>
+              
+              {/* Desktop Line */}
+              <div className="hidden md:block absolute top-1/2 -left-[80px] w-[80px] h-[1px] bg-[#ff5533]">
                 <div className="absolute left-0 bottom-0 w-[1px] h-[80px] bg-[#ff5533]"></div>
                 <div className="absolute left-[-2.5px] bottom-[80px] w-1.5 h-1.5 rounded-full bg-[#ff5533]"></div>
               </div>
@@ -249,7 +263,7 @@ export function ProductScrollSection({
             {/* Pin 3 - Bottom Right (Line goes left, then up) */}
             <div 
               ref={(el) => addToPinRefs(el, 2)} 
-              className="absolute top-[85%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-[0.85] md:scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute top-[80%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-[90vw] max-w-[340px] md:w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-start gap-3 mb-3">
                 <div className="mt-0.5 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -285,7 +299,14 @@ export function ProductScrollSection({
                   </div>
                 </div>
               )}
-              <div className="absolute top-1/2 -left-[80px] w-[80px] h-[1px] bg-[#ff5533]">
+              
+              {/* Mobile Line */}
+              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[40px] bg-[#ff5533]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff5533] -translate-y-1/2"></div>
+              </div>
+              
+              {/* Desktop Line */}
+              <div className="hidden md:block absolute top-1/2 -left-[80px] w-[80px] h-[1px] bg-[#ff5533]">
                 <div className="absolute left-0 bottom-0 w-[1px] h-[80px] bg-[#ff5533]"></div>
                 <div className="absolute left-[-2.5px] bottom-[80px] w-1.5 h-1.5 rounded-full bg-[#ff5533]"></div>
               </div>
@@ -294,7 +315,7 @@ export function ProductScrollSection({
             {/* Pin 4 - Bottom Right (Line goes left, then up) */}
             <div 
               ref={(el) => addToPinRefs(el, 3)} 
-              className="absolute top-[85%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-[0.85] md:scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-56 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute top-[80%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-[90vw] max-w-[340px] md:w-56 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-center gap-2 mb-2">
                  <div className="bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -316,7 +337,14 @@ export function ProductScrollSection({
                   ))}
                 </ul>
               )}
-              <div className="absolute top-1/2 -left-[80px] w-[80px] h-[1px] bg-[#ff5533]">
+              
+              {/* Mobile Line */}
+              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[40px] bg-[#ff5533]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff5533] -translate-y-1/2"></div>
+              </div>
+              
+              {/* Desktop Line */}
+              <div className="hidden md:block absolute top-1/2 -left-[80px] w-[80px] h-[1px] bg-[#ff5533]">
                 <div className="absolute left-0 bottom-0 w-[1px] h-[80px] bg-[#ff5533]"></div>
                 <div className="absolute left-[-2.5px] bottom-[80px] w-1.5 h-1.5 rounded-full bg-[#ff5533]"></div>
               </div>

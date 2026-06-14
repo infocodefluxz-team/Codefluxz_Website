@@ -159,7 +159,7 @@ export default function Hero() {
         scrollTrigger: {
           trigger: container,
           start: "top top",
-          end: "+=800%",       // 800vh to fit all cinematic phases
+          end: "+=400%",       // 400vh for a faster, single scroll feel
           pin: true,
           scrub: 0.5,          // Reduced from 1.2 for tighter, more responsive scroll feeling
           invalidateOnRefresh: true,
@@ -177,30 +177,23 @@ export default function Hero() {
         frame: FRAME_COUNT,
         snap: "frame",
         ease: "none",
-        duration: 4, // 4 parts of the timeline
+        duration: 2, // Faster rotation
       })
-      // Phase 2: Zoom straight into the Laptop Display
-      .to(laptopRef.current, {
-        scale: 1.3, // Adjusted to compensate for removing wrapper scale, keeping final size same
-        ease: "power2.inOut", // Smooth zoom in and out
-        transformOrigin: "50% 55%", // Targets the center of the display specifically
-        duration: 2.5,
-      }, ">") // Starts immediately after the frame sequence completes
-      // Phase 3: Crossfade Canvas to reveal Video seamlessly
+      // Phase 2: Crossfade Canvas to reveal Video seamlessly (No zoom)
       .to(canvas, {
         opacity: 0,
         ease: "none",
         duration: 0.8, // Smooth fade to transparency
-      }, "-=1.2") // Starts slightly before the zoom finishes for a glass-like pass-through effect
+      }, ">") // Starts immediately after the frame sequence completes
       // Fade in the AR Overlay seamlessly with the video reveal
       .to(overlayRef.current, {
         opacity: 1,
         ease: "none",
         duration: 0.8,
       }, "<") // Syncs perfectly with the canvas fade
-      // Phase 4: Hold the video full screen for a moment
+      // Phase 3: Hold the video for a moment
       .to({}, { duration: 1.5 })
-      // Phase 5: Fade out, blur, and slide down the entire container for exit
+      // Phase 4: Fade out, blur, and slide down the entire container for exit
       .to(laptopRef.current, {
         opacity: 0,
         filter: "blur(25px)",
