@@ -358,14 +358,14 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Bottom-right: to Remember Everything */}
+        {/* Bottom-right: Innovation Starts Here */}
         <div className="absolute right-[3%] bottom-[12vh] text-right pointer-events-auto">
           <div
             className="font-sans font-bold tracking-tighter text-white flex flex-col items-end gap-[0.1em]"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.1 }}
           >
-            <FluidText text="to Remember" highlightRange={[0, 5]} highlightColor="#ff5e2b" />
-            <FluidText text="Everything" />
+            <FluidText text="Innovation" highlightRange={[0, 9]} highlightColor="#ff5e2b" />
+            <FluidText text="Starts Here" />
           </div>
         </div>
       </div>

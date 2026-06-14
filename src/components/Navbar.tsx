@@ -99,7 +99,7 @@ export default function Navbar() {
           {/* Center: Image Logo */}
           <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
             <a href="#" className="flex items-center hover:opacity-80 transition-opacity">
-              <img src="/logo1.png" alt="CodeFluxz Logo" className="h-8 object-contain pointer-events-none" />
+              <img src="/headerlogo.png" alt="CodeFluxz Logo" className="h-8 object-contain pointer-events-none" />
             </a>
           </div>
 
