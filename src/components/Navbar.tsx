@@ -99,7 +99,7 @@ export default function Navbar() {
           {/* Center: Image Logo */}
           <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
             <a href="#" className="flex items-center hover:opacity-80 transition-opacity">
-              <img src="/headerlogo.png" alt="CodeFluxz Logo" className="h-8 object-contain pointer-events-none" />
+              <img src="/headerlogo.png" alt="CodeFluxz Logo" className="h-6 md:h-8 object-contain pointer-events-none" />
             </a>
           </div>
 
@@ -108,10 +108,11 @@ export default function Navbar() {
             <a
               id="nav-cta-button"
               href="#enimi-about"
-              className="bg-[#E8541A] hover:bg-[#ff682e] text-white font-sans text-xs font-medium uppercase tracking-wider py-3 px-5 rounded-none flex items-center gap-1 transition-all duration-300 hover:gap-1.5 select-none"
+              className="bg-[#E8541A] hover:bg-[#ff682e] text-white font-sans text-[10px] md:text-xs font-medium uppercase tracking-wider py-2 px-3 md:py-3 md:px-5 rounded-none flex items-center gap-1 transition-all duration-300 hover:gap-1.5 select-none"
             >
-              <span>Get our Products</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <span className="hidden sm:inline">Get our Products</span>
+              <span className="sm:hidden">Products</span>
+              <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4" />
             </a>
           </div>
         </div>

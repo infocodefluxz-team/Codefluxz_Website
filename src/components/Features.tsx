@@ -185,19 +185,19 @@ export default function Features() {
         <div className="w-full h-full relative z-10">
           
           {/* Left Text */}
-          <div className="absolute top-[10vh] md:top-[15vh] left-[5vw] md:left-[8vw] z-[110] pointer-events-none mix-blend-difference text-white">
+          <div className="absolute top-[8vh] left-[5vw] md:top-[15vh] md:left-[8vw] z-[110] pointer-events-none mix-blend-difference text-white">
             <motion.div style={{ opacity: titleOpacity }}>
               <BlockReveal delay={0.2}>
-                <h2 className="text-5xl md:text-7xl font-sans font-medium leading-[1.1] tracking-tight">
+                <h2 className="text-4xl md:text-7xl font-sans font-medium leading-[1.1] tracking-tight">
                   Welcome to <br /> Codefluxz
                 </h2>
               </BlockReveal>
             </motion.div>
             
             {showCards && (
-              <motion.div style={{ opacity: cardsOpacity }} className="mt-6">
+              <motion.div style={{ opacity: cardsOpacity }} className="mt-4 md:mt-6">
                 <BlockReveal delay={0.4}>
-                  <h3 className="text-xl md:text-3xl text-neutral-400 font-light">
+                  <h3 className="text-lg md:text-3xl text-neutral-400 font-light">
                     Our features
                   </h3>
                 </BlockReveal>

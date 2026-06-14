@@ -357,20 +357,20 @@ export default function Hero() {
         style={{ willChange: "opacity, transform" }}
       >
         {/* Top-left: Codefluxz */}
-        <div className="absolute left-[3%] top-[12vh] pointer-events-auto">
+        <div className="absolute left-[5%] md:left-[3%] top-[10vh] md:top-[12vh] pointer-events-auto">
           <h1
             className="font-sans font-bold tracking-tighter text-white m-0 leading-none"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+            style={{ fontSize: "clamp(1.75rem, 8vw, 5rem)" }}
           >
             <FluidText text="Codefluxz" highlightRange={[4, 8]} highlightColor="#ff5e2b" />
           </h1>
         </div>
 
         {/* Bottom-right: Innovation Starts Here */}
-        <div className="absolute right-[3%] bottom-[12vh] text-right pointer-events-auto">
+        <div className="absolute right-[5%] md:right-[3%] bottom-[10vh] md:bottom-[12vh] text-right pointer-events-auto">
           <div
             className="font-sans font-bold tracking-tighter text-white flex flex-col items-end gap-[0.1em]"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.1 }}
+            style={{ fontSize: "clamp(1.75rem, 8vw, 5rem)", lineHeight: 1.1 }}
           >
             <FluidText text="Innovation" highlightRange={[0, 9]} highlightColor="#ff5e2b" />
             <FluidText text="Starts Here" />

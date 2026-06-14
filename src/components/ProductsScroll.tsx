@@ -202,7 +202,7 @@ export function ProductScrollSection({
             {/* Pin 1 - Top Right (Line goes left, then down) */}
             <div 
               ref={(el) => addToPinRefs(el, 0)} 
-              className="absolute top-[-5%] sm:top-[10%] right-[-10%] sm:-right-[5%] scale-[0.6] sm:scale-100 origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute top-[85%] md:top-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-[0.85] md:scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-start gap-3">
                 <div className="mt-1 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -225,7 +225,7 @@ export function ProductScrollSection({
             {/* Pin 2 - Bottom Right (Line goes left, then up) */}
             <div 
               ref={(el) => addToPinRefs(el, 1)} 
-              className="absolute bottom-[-5%] sm:bottom-[10%] right-[-10%] sm:-right-[5%] scale-[0.6] sm:scale-100 origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute top-[85%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-[0.85] md:scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-start gap-3">
                 <div className="mt-1 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -249,7 +249,7 @@ export function ProductScrollSection({
             {/* Pin 3 - Bottom Right (Line goes left, then up) */}
             <div 
               ref={(el) => addToPinRefs(el, 2)} 
-              className="absolute bottom-[-5%] sm:bottom-[10%] right-[-10%] sm:-right-[5%] scale-[0.6] sm:scale-100 origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute top-[85%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-[0.85] md:scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-start gap-3 mb-3">
                 <div className="mt-0.5 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
@@ -294,7 +294,7 @@ export function ProductScrollSection({
             {/* Pin 4 - Bottom Right (Line goes left, then up) */}
             <div 
               ref={(el) => addToPinRefs(el, 3)} 
-              className="absolute bottom-[-5%] sm:bottom-[10%] right-[-10%] sm:-right-[5%] scale-[0.6] sm:scale-100 origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-56 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              className="absolute top-[85%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-[0.85] md:scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-56 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
             >
               <div className="flex items-center gap-2 mb-2">
                  <div className="bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">

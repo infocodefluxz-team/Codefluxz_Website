@@ -114,35 +114,39 @@ export default function ExperienceAndRecognized() {
                 key={idx}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => setHoveredIdx(idx)}
-                className="relative cursor-pointer shrink-0 snap-center md:snap-align-none"
+                className="relative cursor-pointer shrink-0 snap-center"
                 initial={false}
                 animate={{
-                  width: isHovered ? 260 : 110,
-                  height: isHovered ? 340 : 160
+                  width: window.innerWidth < 768 ? 260 : (isHovered ? 260 : 110),
+                  height: window.innerWidth < 768 ? 340 : (isHovered ? 340 : 160)
                 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                <div className="w-full h-full overflow-hidden bg-neutral-200 shadow-sm relative z-10">
+                <div className="w-full h-full overflow-hidden bg-neutral-200 shadow-sm relative z-10 rounded-lg md:rounded-none">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
 
-                {/* Details (Fade in below) */}
+                {/* Details (Always visible on mobile, fade in below on desktop) */}
                 <motion.div
                   className="absolute left-1/2 -translate-x-1/2 top-full mt-5 flex flex-col items-center w-max pointer-events-none z-0"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : -10 }}
+                  initial={false}
+                  animate={{ 
+                    opacity: window.innerWidth < 768 ? 1 : (isHovered ? 1 : 0), 
+                    y: window.innerWidth < 768 ? 0 : (isHovered ? 0 : -10) 
+                  }}
                   transition={{ duration: 0.3 }}
                 >
                   <h4 className="text-black font-bold text-sm md:text-lg tracking-tight whitespace-nowrap">{member.name}</h4>
                   <p className="text-[#ff5e2b] text-xs md:text-sm font-semibold whitespace-nowrap">{member.role}</p>
                 </motion.div>
 
-                {/* 4 Green Dots when Hovered */}
-                {isHovered && (
+                {/* 4 Green Dots when active */}
+                {(window.innerWidth < 768 || isHovered) && (
                   <>
                     <div className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-[#00ff00] z-20" />
                     <div className="absolute -top-1.5 -right-1.5 w-3 h-3 bg-[#00ff00] z-20" />
