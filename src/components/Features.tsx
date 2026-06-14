@@ -52,25 +52,25 @@ function GreenDotsSequence({ scrollYProgress }: { scrollYProgress: MotionValue<n
   const xOffset = 160;
   const yOffset = 112;
 
-  // Move to center 0.55 -> 0.6
-  // Spin 0.6 -> 0.65
-  // Shoot out 0.65 -> 0.7
-  const tlX = useTransform(scrollYProgress, [0.55, 0.6, 0.65, 0.7], [-xOffset, -15, -15, -2000]);
-  const tlY = useTransform(scrollYProgress, [0.55, 0.6, 0.65, 0.7], [-yOffset, -15, -15, -2000]);
+  // Move to center 0.65 -> 0.75
+  // Spin 0.75 -> 0.85
+  // Shoot out 0.85 -> 0.92
+  const tlX = useTransform(scrollYProgress, [0.65, 0.75, 0.85, 0.92], [-xOffset, -15, -15, -2000]);
+  const tlY = useTransform(scrollYProgress, [0.65, 0.75, 0.85, 0.92], [-yOffset, -15, -15, -2000]);
 
-  const trX = useTransform(scrollYProgress, [0.55, 0.6, 0.65, 0.7], [xOffset, 15, 15, 2000]);
-  const trY = useTransform(scrollYProgress, [0.55, 0.6, 0.65, 0.7], [-yOffset, -15, -15, -2000]);
+  const trX = useTransform(scrollYProgress, [0.65, 0.75, 0.85, 0.92], [xOffset, 15, 15, 2000]);
+  const trY = useTransform(scrollYProgress, [0.65, 0.75, 0.85, 0.92], [-yOffset, -15, -15, -2000]);
 
-  const blX = useTransform(scrollYProgress, [0.55, 0.6, 0.65, 0.7], [-xOffset, -15, -15, -2000]);
-  const blY = useTransform(scrollYProgress, [0.55, 0.6, 0.65, 0.7], [yOffset, 15, 15, 2000]);
+  const blX = useTransform(scrollYProgress, [0.65, 0.75, 0.85, 0.92], [-xOffset, -15, -15, -2000]);
+  const blY = useTransform(scrollYProgress, [0.65, 0.75, 0.85, 0.92], [yOffset, 15, 15, 2000]);
 
-  const brX = useTransform(scrollYProgress, [0.55, 0.6, 0.65, 0.7], [xOffset, 15, 15, 2000]);
-  const brY = useTransform(scrollYProgress, [0.55, 0.6, 0.65, 0.7], [yOffset, 15, 15, 2000]);
+  const brX = useTransform(scrollYProgress, [0.65, 0.75, 0.85, 0.92], [xOffset, 15, 15, 2000]);
+  const brY = useTransform(scrollYProgress, [0.65, 0.75, 0.85, 0.92], [yOffset, 15, 15, 2000]);
 
-  const rotate = useTransform(scrollYProgress, [0.6, 0.65], [0, 180]);
+  const rotate = useTransform(scrollYProgress, [0.75, 0.85], [0, 180]);
   
   // Fade out slightly before max explosion
-  const opacity = useTransform(scrollYProgress, [0.69, 0.7], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0.91, 0.92], [1, 0]);
 
   return (
     <motion.div style={{ rotate, opacity }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 z-40 pointer-events-none">
@@ -83,10 +83,10 @@ function GreenDotsSequence({ scrollYProgress }: { scrollYProgress: MotionValue<n
 }
 
 const StackedCard: React.FC<{ idx: number, card: any, scrollYProgress: MotionValue<number> }> = ({ idx, card, scrollYProgress }) => {
-  const start = idx * 0.125;
-  const inEnd = start + 0.025;
-  const outStart = start + 0.1;
-  const end = start + 0.125;
+  const start = idx * 0.15;
+  const inEnd = start + 0.03;
+  const outStart = start + 0.12;
+  const end = start + 0.15;
 
   const inStart = Math.max(0, start - 0.05);
   const opStart = Math.max(0, start - 0.02);
@@ -119,7 +119,7 @@ const StackedCard: React.FC<{ idx: number, card: any, scrollYProgress: MotionVal
 
   return (
     <motion.div 
-      style={{ x, opacity, scale, filter }}
+      style={{ x, opacity, scale, filter, willChange: 'filter, transform, opacity' }}
       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-56 flex flex-col justify-center z-30"
     >
       <div className="absolute inset-0 bg-[#1a1a1a] border border-white/5 shadow-[0_10px_40px_rgba(0,0,0,0.5)] rounded-sm" />
@@ -142,34 +142,34 @@ export default function Features() {
     offset: ["start start", "end end"]
   });
 
-  const activeIndexRaw = useTransform(scrollYProgress, [0, 0.125, 0.25, 0.375, 0.5], [0, 1, 2, 3, 3]);
+  const activeIndexRaw = useTransform(scrollYProgress, [0, 0.15, 0.3, 0.45, 0.6], [0, 1, 2, 3, 3]);
   useMotionValueEvent(activeIndexRaw, "change", (latest) => {
     setActiveIdx(Math.floor(latest));
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     // Physically unmount elements after their opacity fades to 0 to guarantee no overlaps or lingering
-    setShowCards(latest < 0.56);
-    setShowTitle(latest < 0.76);
+    setShowCards(latest < 0.66);
+    setShowTitle(latest < 0.91);
   });
 
-  const paginationX = useTransform(scrollYProgress, [0, 0.5], ["0px", "-160px"]);
+  const paginationX = useTransform(scrollYProgress, [0, 0.6], ["0px", "-160px"]);
 
-  // Cards fade out 0.5 to 0.55
-  const cardsOpacity = useTransform(scrollYProgress, [0, 0.5, 0.55, 1], [1, 1, 0, 0]);
+  // Cards fade out 0.6 to 0.65
+  const cardsOpacity = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [1, 1, 0, 0]);
 
-  // Title fades out 0.7 to 0.75
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.7, 0.75, 1], [1, 1, 0, 0]);
+  // Title fades out 0.85 to 0.9
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.85, 0.9, 1], [1, 1, 0, 0]);
 
-  // White circle expands 0.7 to 1.0 (slower)
-  const whiteCircleScale = useTransform(scrollYProgress, [0, 0.7, 1], [0, 0, 200]);
-  const whiteCircleOpacity = useTransform(scrollYProgress, [0, 0.69, 0.7, 1], [0, 0, 1, 1]);
+  // White circle expands 0.9 to 1.0
+  const whiteCircleScale = useTransform(scrollYProgress, [0, 0.9, 1], [0, 0, 50]);
+  const whiteCircleOpacity = useTransform(scrollYProgress, [0, 0.89, 0.9, 1], [0, 0, 1, 1]);
 
-  // Section background solidifies to white 0.7 to 1.0 (slower)
-  const sectionBg = useTransform(scrollYProgress, [0, 0.7, 1], ["#111111", "#111111", "#ffffff"]);
+  // Section background solidifies to white 0.9 to 1.0
+  const sectionBg = useTransform(scrollYProgress, [0, 0.9, 1], ["#111111", "#111111", "#ffffff"]);
 
   return (
-    <motion.section ref={containerRef} style={{ backgroundColor: sectionBg }} className="h-[600vh] w-full relative overflow-clip">
+    <motion.section ref={containerRef} style={{ backgroundColor: sectionBg }} className="h-[450vh] w-full relative overflow-clip">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center">
         
         {/* The Expanding White Screen Transition (Now behind the mix-blend text) */}
@@ -186,7 +186,7 @@ export default function Features() {
           
           {/* Left Text */}
           <div className="absolute top-[10vh] md:top-[15vh] left-[5vw] md:left-[8vw] z-[110] pointer-events-none mix-blend-difference text-white">
-            <motion.div>
+            <motion.div style={{ opacity: titleOpacity }}>
               <BlockReveal delay={0.2}>
                 <h2 className="text-5xl md:text-7xl font-sans font-medium leading-[1.1] tracking-tight">
                   Welcome to <br /> Codefluxz
@@ -251,3 +251,4 @@ export default function Features() {
     </motion.section>
   );
 }
+

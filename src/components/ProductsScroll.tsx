@@ -394,7 +394,7 @@ export default function EnimiApp() {
   return (
     <div className="bg-white">
       {/* Our Products Heading Section */}
-      <section className="w-full relative flex flex-col pt-32 pb-8 px-6 md:px-16 lg:px-24">
+      <section className="w-full relative flex flex-col pt-0 pb-8 px-6 md:px-16 lg:px-24">
         <div className="flex flex-col items-start max-w-6xl mx-auto w-full z-10 relative">
           <h2 className="text-5xl md:text-7xl font-sans font-medium text-black hover:text-[#ff5e2b] transition-colors duration-500 tracking-tight leading-[1.05] cursor-default">
             <BlockReveal>

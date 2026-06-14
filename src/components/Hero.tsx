@@ -147,6 +147,7 @@ export default function Hero() {
     firstImg.onload = () => {
       canvas.width = firstImg.naturalWidth;
       canvas.height = firstImg.naturalHeight;
+      canvas.style.backgroundImage = "none";
       render(1);
     };
 
@@ -160,7 +161,7 @@ export default function Hero() {
           start: "top top",
           end: "+=800%",       // 800vh to fit all cinematic phases
           pin: true,
-          scrub: 1.2,          // Butter-smooth interpolation
+          scrub: 0.5,          // Reduced from 1.2 for tighter, more responsive scroll feeling
           invalidateOnRefresh: true,
           onUpdate: (self) => {
             requestAnimationFrame(() => {
@@ -266,7 +267,7 @@ export default function Hero() {
       <div
         ref={laptopRef}
         className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden"
-        style={{ willChange: "filter, opacity, transform", mixBlendMode: "screen" }}
+        style={{ willChange: "filter, opacity, transform", mixBlendMode: "screen", transform: "translateZ(0)" }}
       >
         {/* 16:9 Aspect Ratio Wrapper to lock video exactly to the laptop screen coords */}
         <div 
@@ -290,14 +291,21 @@ export default function Hero() {
           <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-full object-contain pointer-events-none block z-10"
-            style={{ willChange: "transform, opacity" }}
+            style={{ 
+              willChange: "transform, opacity",
+              transform: "translateZ(0)",
+              backgroundImage: "url('/Laptop_Webp/00001_result.webp')",
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat"
+            }}
           />
 
           {/* AR Overlay - Fades in during Phase 3 */}
           <div
             ref={overlayRef}
             className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
-            style={{ opacity: 0 }}
+            style={{ opacity: 0, willChange: "opacity, transform", transform: "translateZ(0)" }}
           >
             {/* The UI Block */}
             <div className="flex flex-col gap-[1.5vh] w-[80vw] md:w-[35vw] text-[#00ff00] font-sans font-light tracking-wide">
