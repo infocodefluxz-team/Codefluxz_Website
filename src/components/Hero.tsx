@@ -13,8 +13,8 @@ import FluidText from "./FluidText";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FRAME_COUNT = 176;
-const currentFrame = (index: number) => `/LapTop_Imges/${index.toString().padStart(5, "0")}.png`;
+const FRAME_COUNT = 151;
+const currentFrame = (index: number) => `/Laptop_Webp/${index.toString().padStart(5, "0")}_result.webp`;
 
 /** Clamp + normalize progress between two thresholds → [0, 1] */
 const phase = (progress: number, start: number, end: number) =>
@@ -26,6 +26,10 @@ export default function Hero() {
   const laptopRef     = useRef<HTMLDivElement>(null);
   const introRef      = useRef<HTMLDivElement>(null);
   const scrollHintRef = useRef<HTMLDivElement>(null);
+  const videoRef      = useRef<HTMLVideoElement>(null);
+  const overlayRef    = useRef<HTMLDivElement>(null);
+  const titleRef      = useRef<HTMLSpanElement>(null);
+  const descRef       = useRef<HTMLDivElement>(null);
 
   const imagesRef = useRef<HTMLImageElement[]>([]);
 
@@ -37,6 +41,68 @@ export default function Hero() {
       img.src = currentFrame(i);
       imagesRef.current.push(img);
     }
+  }, []);
+
+  // ── Force Video Playback on Interaction ────────────────────────────────────
+  useEffect(() => {
+    const playVideo = () => {
+      if (videoRef.current && videoRef.current.paused) {
+        videoRef.current.play().catch(() => {});
+      }
+    };
+    
+    // Attempt play immediately
+    playVideo();
+    
+    // Fallback: Play on first interaction to bypass strict autoplay policies
+    window.addEventListener("scroll", playVideo, { once: true });
+    window.addEventListener("click", playVideo, { once: true });
+    window.addEventListener("touchstart", playVideo, { once: true });
+    
+    return () => {
+      window.removeEventListener("scroll", playVideo);
+      window.removeEventListener("click", playVideo);
+      window.removeEventListener("touchstart", playVideo);
+    };
+  }, []);
+
+  // ── Overlay Message Loop Logic ─────────────────────────────────────────────
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    
+    const messages = [
+      {
+        title: "Enimi",
+        desc: "Enimi is an AI-powered platform that detects whether text, images, or videos are AI-generated or manipulated. It provides authenticity scores and insights, helping businesses and individuals make trusted decisions in the age of AI."
+      },
+      {
+        title: "PotaKetch",
+        desc: "PotaKetch is a credit-based opportunity marketplace that connects startups and businesses with students, interns, and freelancers for real-world projects. Users bid with credits to win projects, gain experience, build their portfolios, and earn money while helping businesses find skilled talent."
+      },
+      {
+        title: "FamTree",
+        desc: "FamTree is a digital family archive that helps users store, organize, and preserve their family history in one secure place. It allows families to maintain important details across generations, ensuring memories and relationships are never lost."
+      }
+    ];
+    
+    let loopCount = 0;
+    let lastTime = 0;
+    
+    const handleTimeUpdate = () => {
+      // If currentTime is smaller than lastTime by >0.5s, the video just looped!
+      if (video.currentTime < lastTime - 0.5) {
+        loopCount = (loopCount + 1) % messages.length;
+        if (titleRef.current && descRef.current) {
+          titleRef.current.innerText = messages[loopCount].title;
+          descRef.current.innerText = messages[loopCount].desc;
+        }
+      }
+      lastTime = video.currentTime;
+    };
+    
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    return () => video.removeEventListener('timeupdate', handleTimeUpdate);
   }, []);
 
   // ── 2. Handle Text & Blur Fades ────────────────────────────────────────────
@@ -112,10 +178,10 @@ export default function Hero() {
         ease: "none",
         duration: 4, // 4 parts of the timeline
       })
-      // Phase 2: Massive Zoom straight into the Laptop Display
-      .to(canvas, {
-        scale: 25,
-        ease: "power2.in", // Accelerate into the zoom
+      // Phase 2: Zoom straight into the Laptop Display
+      .to(laptopRef.current, {
+        scale: 1.3, // Adjusted to compensate for removing wrapper scale, keeping final size same
+        ease: "power2.inOut", // Smooth zoom in and out
         transformOrigin: "50% 55%", // Targets the center of the display specifically
         duration: 2.5,
       }, ">") // Starts immediately after the frame sequence completes
@@ -125,6 +191,12 @@ export default function Hero() {
         ease: "none",
         duration: 0.8, // Smooth fade to transparency
       }, "-=1.2") // Starts slightly before the zoom finishes for a glass-like pass-through effect
+      // Fade in the AR Overlay seamlessly with the video reveal
+      .to(overlayRef.current, {
+        opacity: 1,
+        ease: "none",
+        duration: 0.8,
+      }, "<") // Syncs perfectly with the canvas fade
       // Phase 4: Hold the video full screen for a moment
       .to({}, { duration: 1.5 })
       // Phase 5: Fade out, blur, and slide down the entire container for exit
@@ -198,26 +270,21 @@ export default function Hero() {
       >
         {/* 16:9 Aspect Ratio Wrapper to lock video exactly to the laptop screen coords */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.85] xl:scale-90 origin-center"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center"
           style={{
             width: "max(100vw, 177.77vh)",
             height: "max(56.25vw, 100vh)",
           }}
         >
-          {/* The video element playing behind the canvas display, positioned in the bezels */}
+          {/* The video element playing behind the canvas display, identically sized */}
           <video
-            src="/Laptop.mp4"
+            ref={videoRef}
+            src="/Laptop_7%20-%20Trim.mp4"
             autoPlay
             loop
             muted
             playsInline
-            className="absolute z-0 object-cover rounded-[1.5%]"
-            style={{
-              top: "10.5%",
-              left: "14%",
-              width: "72%",
-              height: "58%",
-            }}
+            className="absolute inset-0 z-0 object-contain w-full h-full pointer-events-none"
           />
 
           <canvas
@@ -225,6 +292,53 @@ export default function Hero() {
             className="absolute inset-0 w-full h-full object-contain pointer-events-none block z-10"
             style={{ willChange: "transform, opacity" }}
           />
+
+          {/* AR Overlay - Fades in during Phase 3 */}
+          <div
+            ref={overlayRef}
+            className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
+            style={{ opacity: 0 }}
+          >
+            {/* The UI Block */}
+            <div className="flex flex-col gap-[1.5vh] w-[35vw] text-[#00ff00] font-sans font-light tracking-wide">
+              
+              {/* Top Bar */}
+              <div className="flex justify-between items-center text-[1.2vw] md:text-[0.9vw]">
+                <div className="flex gap-3">
+                  <span>12:08</span>
+                  <span>codefluxz</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  {/* Cloud icon */}
+                  <svg width="1vw" height="1vw" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 19c2.485 0 4.5-2.015 4.5-4.5 0-2.313-1.745-4.226-4-4.474V10c0-3.314-2.686-6-6-6s-6 2.686-6 6v.026c-2.255.248-4 2.161-4 4.474C2 17.485 4.015 19.5 6.5 19h11z"/></svg>
+                  {/* Battery icon */}
+                  <div className="w-[1.6vw] h-[0.7vw] border border-[#00ff00] rounded-[2px] p-[1px] relative flex items-center">
+                    <div className="bg-[#00ff00] h-full w-[69%] rounded-[1px]"></div>
+                    <div className="absolute -right-[2px] h-[40%] w-[1px] bg-[#00ff00]"></div>
+                  </div>
+                  <span>69%</span>
+                </div>
+              </div>
+
+              {/* Title Box */}
+              <div className="self-end border border-[#00ff00] rounded-lg px-[1.2vw] py-[0.5vh] mt-[1vh]">
+                <span ref={titleRef} className="text-[1.2vw] md:text-[0.9vw]">Enimi</span>
+              </div>
+
+              {/* Description */}
+              <div ref={descRef} className="text-[1.2vw] md:text-[0.9vw] leading-relaxed text-left">
+                Enimi is an AI-powered platform that detects whether text, images, or videos are AI-generated or manipulated. It provides authenticity scores and insights, helping businesses and individuals make trusted decisions in the age of AI.
+              </div>
+
+              {/* Bottom Bar */}
+              <div className="flex justify-between items-center text-[1.2vw] md:text-[0.9vw] mt-[1vh]">
+                <div className="border border-[#00ff00] rounded-full px-[1.5vw] py-[0.4vh]">Answer</div>
+                <div>Recap</div>
+                <div>Fact Check</div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
 
@@ -240,7 +354,7 @@ export default function Hero() {
             className="font-sans font-bold tracking-tighter text-white m-0 leading-none"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
-            <FluidText text="Codefluxz" />
+            <FluidText text="Codefluxz" highlightRange={[4, 8]} highlightColor="#ff5e2b" />
           </h1>
         </div>
 
@@ -250,7 +364,7 @@ export default function Hero() {
             className="font-sans font-bold tracking-tighter text-white flex flex-col items-end gap-[0.1em]"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.1 }}
           >
-            <FluidText text="to Remember" />
+            <FluidText text="to Remember" highlightRange={[0, 5]} highlightColor="#ff5e2b" />
             <FluidText text="Everything" />
           </div>
         </div>

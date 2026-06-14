@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion } from "motion/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -364,9 +365,45 @@ export function ProductScrollSection({
   );
 }
 
+const BlockReveal = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="relative inline-block overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.01, delay: 0.4 }}
+      >
+        {children}
+      </motion.div>
+      <motion.div
+        className="absolute top-0 bottom-0 bg-black z-10"
+        initial={{ left: 0, right: "100%" }}
+        whileInView={{
+          left: ["0%", "0%", "100%"],
+          right: ["100%", "0%", "0%"]
+        }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeInOut", times: [0, 0.5, 1] }}
+      />
+    </div>
+  );
+};
+
 export default function EnimiApp() {
   return (
     <div className="bg-white">
+      {/* Our Products Heading Section */}
+      <section className="w-full relative flex flex-col pt-32 pb-8 px-6 md:px-16 lg:px-24">
+        <div className="flex flex-col items-start max-w-6xl mx-auto w-full z-10 relative">
+          <h2 className="text-5xl md:text-7xl font-sans font-medium text-black hover:text-[#ff5e2b] transition-colors duration-500 tracking-tight leading-[1.05] cursor-default">
+            <BlockReveal>
+              Our Products
+            </BlockReveal>
+          </h2>
+        </div>
+      </section>
+
       <ProductScrollSection 
         hoverImageTransform="scale(1.035) translate(-0.5%, 1.5%)"
       />
