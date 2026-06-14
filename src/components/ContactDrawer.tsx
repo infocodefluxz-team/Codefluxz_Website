@@ -55,13 +55,14 @@ export default function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
                 method="POST"
                 encType="text/plain"
                 className="flex flex-col gap-8"
+                autoComplete="off"
               >
                 <div className="flex gap-4">
-                  <input type="text" name="First Name" placeholder="Name" className="w-1/2 border-b border-neutral-200 py-2 text-black bg-transparent focus:outline-none focus:border-black transition-colors" required />
-                  <input type="text" name="Last Name" placeholder="Last name" className="w-1/2 border-b border-neutral-200 py-2 text-black bg-transparent focus:outline-none focus:border-black transition-colors" required />
+                  <input type="text" name="First Name" placeholder="Name" className="w-1/2 border-b border-neutral-200 py-2 text-black bg-transparent focus:outline-none focus:border-black transition-colors" required autoComplete="off" />
+                  <input type="text" name="Last Name" placeholder="Last name" className="w-1/2 border-b border-neutral-200 py-2 text-black bg-transparent focus:outline-none focus:border-black transition-colors" required autoComplete="off" />
                 </div>
-                <input type="email" name="Email" placeholder="E-mail" className="w-full border-b border-neutral-200 py-2 text-black bg-transparent focus:outline-none focus:border-black transition-colors" required />
-                <textarea name="Message" placeholder="How we can help" className="w-full border-b border-neutral-200 py-2 text-black bg-transparent focus:outline-none focus:border-black transition-colors resize-none h-24" required></textarea>
+                <input type="email" name="Email" placeholder="E-mail" className="w-full border-b border-neutral-200 py-2 text-black bg-transparent focus:outline-none focus:border-black transition-colors" required autoComplete="off" />
+                <textarea name="Message" placeholder="How we can help" className="w-full border-b border-neutral-200 py-2 text-black bg-transparent focus:outline-none focus:border-black transition-colors resize-none h-24" required autoComplete="off"></textarea>
                 
                 <button 
                   type="submit" 

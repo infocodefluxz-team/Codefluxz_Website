@@ -261,12 +261,14 @@ export default function Footer() {
                 method="POST"
                 encType="text/plain"
                 className="flex flex-col gap-3"
+                autoComplete="off"
               >
                 <textarea 
                   name="Vision" 
                   placeholder="Type your ideas and messages here..." 
                   className="w-full border border-neutral-200 rounded-lg p-3 text-black bg-white focus:outline-none focus:border-[#ff5e2b] focus:ring-1 focus:ring-[#ff5e2b] transition-all resize-none h-32 text-sm placeholder:text-neutral-400" 
                   required
+                  autoComplete="off"
                 />
                 <button 
                   type="submit" 
