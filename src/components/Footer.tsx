@@ -118,7 +118,19 @@ export default function Footer() {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      const rect = footer.getBoundingClientRect();
+      const touch = e.touches[0];
+      if (!touch) return;
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      points.push({ x, y, age: 0 });
+      setMousePos({ x: touch.clientX, y: touch.clientY });
+    };
+
     footer.addEventListener('mousemove', handleMouseMove);
+    footer.addEventListener('touchmove', handleTouchMove, { passive: true });
+    footer.addEventListener('touchstart', handleTouchMove, { passive: true });
 
     let animationFrameId: number;
     const render = () => {
@@ -149,6 +161,8 @@ export default function Footer() {
     return () => {
       window.removeEventListener('resize', resize);
       footer.removeEventListener('mousemove', handleMouseMove);
+      footer.removeEventListener('touchmove', handleTouchMove);
+      footer.removeEventListener('touchstart', handleTouchMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, [isFullScreen]); // Re-bind on fullscreen toggle to get proper bounds
