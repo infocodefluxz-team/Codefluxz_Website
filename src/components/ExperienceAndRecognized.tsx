@@ -55,6 +55,39 @@ const BlockReveal = ({ children }: { children: React.ReactNode }) => {
 
 export default function ExperienceAndRecognized() {
   const [hoveredIdx, setHoveredIdx] = useState<number>(4);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    // Only run scroll logic on mobile
+    if (window.innerWidth >= 768) return;
+    
+    const container = e.currentTarget;
+    const containerRect = container.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+
+    let closestIdx = hoveredIdx;
+    let minDiff = Infinity;
+
+    // Find the child closest to the center of the scroll container
+    Array.from(container.children).forEach((child, idx) => {
+      // We only care about the team members (first `team.length` children)
+      if (idx >= team.length) return;
+      
+      const element = child as HTMLElement;
+      const rect = element.getBoundingClientRect();
+      const childCenter = rect.left + rect.width / 2;
+      const diff = Math.abs(childCenter - containerCenter);
+      
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = idx;
+      }
+    });
+
+    if (closestIdx !== hoveredIdx) {
+      setHoveredIdx(closestIdx);
+    }
+  };
 
   return (
     <div className="bg-[#fcfcfc] text-black w-full overflow-hidden">
@@ -102,9 +135,11 @@ export default function ExperienceAndRecognized() {
 
         {/* Expanding Accordion Gallery */}
         <div
+          ref={containerRef}
           className="flex justify-start md:justify-center items-end gap-4 md:gap-6 lg:gap-8 w-full h-[460px] px-4 pb-20 pt-10 overflow-x-auto snap-x"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           onMouseLeave={() => setHoveredIdx(4)}
+          onScroll={handleScroll}
         >
           {team.map((member, idx) => {
             const isHovered = hoveredIdx === idx;
@@ -117,8 +152,8 @@ export default function ExperienceAndRecognized() {
                 className="relative cursor-pointer shrink-0 snap-center"
                 initial={false}
                 animate={{
-                  width: window.innerWidth < 768 ? 260 : (isHovered ? 260 : 110),
-                  height: window.innerWidth < 768 ? 340 : (isHovered ? 340 : 160)
+                  width: isHovered ? 260 : 110,
+                  height: isHovered ? 340 : 160
                 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
@@ -131,13 +166,13 @@ export default function ExperienceAndRecognized() {
                   />
                 </div>
 
-                {/* Details (Always visible on mobile, fade in below on desktop) */}
+                {/* Details (Always visible on mobile when active, fade in below on desktop) */}
                 <motion.div
                   className="absolute left-1/2 -translate-x-1/2 top-full mt-5 flex flex-col items-center w-max pointer-events-none z-0"
                   initial={false}
                   animate={{ 
-                    opacity: window.innerWidth < 768 ? 1 : (isHovered ? 1 : 0), 
-                    y: window.innerWidth < 768 ? 0 : (isHovered ? 0 : -10) 
+                    opacity: isHovered ? 1 : 0, 
+                    y: isHovered ? 0 : -10 
                   }}
                   transition={{ duration: 0.3 }}
                 >
@@ -146,7 +181,7 @@ export default function ExperienceAndRecognized() {
                 </motion.div>
 
                 {/* 4 Green Dots when active */}
-                {(window.innerWidth < 768 || isHovered) && (
+                {isHovered && (
                   <>
                     <div className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-[#00ff00] z-20" />
                     <div className="absolute -top-1.5 -right-1.5 w-3 h-3 bg-[#00ff00] z-20" />
