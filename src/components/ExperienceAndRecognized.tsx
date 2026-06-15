@@ -56,13 +56,40 @@ const BlockReveal = ({ children }: { children: React.ReactNode }) => {
 export default function ExperienceAndRecognized() {
   const [hoveredIdx, setHoveredIdx] = useState<number>(4);
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const scrollTimeout = React.useRef<NodeJS.Timeout | null>(null);
+
+  // Center Nischith (index 4) on initial load for mobile
+  React.useEffect(() => {
+    if (window.innerWidth < 768 && containerRef.current) {
+      const container = containerRef.current;
+      // Wait for layout to be ready
+      requestAnimationFrame(() => {
+        const targetChild = container.children[4] as HTMLElement;
+        if (targetChild) {
+          const containerRect = container.getBoundingClientRect();
+          const childRect = targetChild.getBoundingClientRect();
+          const scrollPos = container.scrollLeft + (childRect.left - containerRect.left) - (containerRect.width / 2) + (childRect.width / 2);
+          container.scrollTo({ left: scrollPos, behavior: "instant" });
+        }
+      });
+    }
+  }, []);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     // Only run scroll logic on mobile
     if (window.innerWidth >= 768) return;
     
     const container = e.currentTarget;
-    const containerRect = container.getBoundingClientRect();
+    
+    // Clear previous timeout to debounce the scroll
+    if (scrollTimeout.current) {
+      clearTimeout(scrollTimeout.current);
+    }
+
+    // Wait 100ms after scroll ends to update the expanded image
+    // This prevents layout thrashing and jittering while swiping
+    scrollTimeout.current = setTimeout(() => {
+      const containerRect = container.getBoundingClientRect();
     const containerCenter = containerRect.left + containerRect.width / 2;
 
     let closestIdx = hoveredIdx;
@@ -87,6 +114,7 @@ export default function ExperienceAndRecognized() {
     if (closestIdx !== hoveredIdx) {
       setHoveredIdx(closestIdx);
     }
+    }, 100);
   };
 
   return (
@@ -136,7 +164,7 @@ export default function ExperienceAndRecognized() {
         {/* Expanding Accordion Gallery */}
         <div
           ref={containerRef}
-          className="flex justify-start md:justify-center items-end gap-4 md:gap-6 lg:gap-8 w-full h-[460px] px-4 pb-20 pt-10 overflow-x-auto snap-x"
+          className="flex justify-start md:justify-center items-end gap-4 md:gap-6 lg:gap-8 w-full h-[460px] px-4 pb-20 pt-10 overflow-x-auto snap-x snap-mandatory relative"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           onMouseLeave={() => setHoveredIdx(4)}
           onScroll={handleScroll}
@@ -149,7 +177,7 @@ export default function ExperienceAndRecognized() {
                 key={idx}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => setHoveredIdx(idx)}
-                className="relative cursor-pointer shrink-0 snap-center"
+                className="relative cursor-pointer shrink-0 snap-center snap-always"
                 initial={false}
                 animate={{
                   width: isHovered ? 260 : 110,
