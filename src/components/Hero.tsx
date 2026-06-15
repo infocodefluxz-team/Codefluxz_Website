@@ -264,11 +264,7 @@ export default function Hero() {
       >
         {/* 16:9 Aspect Ratio Wrapper to lock video exactly to the laptop screen coords */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center"
-          style={{
-            width: "max(100vw, 177.77vh)",
-            height: "max(56.25vw, 100vh)",
-          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center w-[150vw] h-[84.375vw] md:w-[max(100vw,177.77vh)] md:h-[max(56.25vw,100vh)]"
         >
           {/* The video element playing behind the canvas display, identically sized */}
           <video

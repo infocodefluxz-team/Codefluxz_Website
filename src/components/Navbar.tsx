@@ -75,7 +75,7 @@ export default function Navbar() {
   return (
     <>
       {/* Persistent Hamburger Menu */}
-      <div className={`fixed top-6 left-6 md:left-10 z-50 transition-all duration-300 ${isHamburgerHidden ? "opacity-0 pointer-events-none translate-y-[-20px]" : "opacity-100 translate-y-0"}`}>
+      <div className={`fixed top-0 left-0 px-6 md:px-10 h-20 flex items-center z-50 transition-all duration-300 ${isHamburgerHidden ? "opacity-0 pointer-events-none translate-y-[-20px]" : "opacity-100 translate-y-0"}`}>
         <button
           id="nav-menu-toggle"
           onClick={() => setIsOpen(true)}
