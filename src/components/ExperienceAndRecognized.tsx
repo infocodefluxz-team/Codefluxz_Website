@@ -6,7 +6,7 @@ const team = [
   { name: "Ajay Vikram", role: "AI Research & Innovation Lead", image: "/Internship images/Ajay Vikram.png" },
   { name: "Abishek Raj", role: "Head of Engineering", image: "/Internship images/Abishek Raj.png" },
   { name: "Shashank", role: "Growth & Community Lead", image: "/Internship images/shashank.png" },
-  { name: "Nischith Neelama", role: "Chief Inspiration Officer (CIO)", image: "/Internship images/Nischith_Neelamma.jpeg" },
+  { name: "Nischith Neelamma", role: "Chief Inspiration Officer (CIO)", image: "/Internship images/Nischith_Neelamma.jpeg" },
   { name: "Keshav J", role: "Data Analyst", image: "/Internship images/keshav.jpg" },
   { name: "Nadish Sharma", role: "Full Stack Developer", image: "/Internship images/nadish_sharma.jpg" },
   { name: "Chandhru", role: "Full Stack Developer", image: "/Internship images/Chandru L.png" },
