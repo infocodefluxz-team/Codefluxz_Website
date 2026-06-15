@@ -152,7 +152,7 @@ export function ProductScrollSection({
         <div className="w-full md:w-[35%] h-[40%] md:h-full flex flex-col justify-center px-6 md:pl-20 md:px-0 relative z-20">
           
           {[0, 1, 2, 3].map(i => (
-            <div key={i} ref={(el) => addToTextRefs(el, i)} className="absolute top-1/2 -translate-y-1/2 left-6 right-6 md:left-20 md:right-0 invisible pointer-events-auto group cursor-default">
+            <div key={i} ref={(el) => addToTextRefs(el, i)} className="absolute top-[40%] md:top-1/2 -translate-y-1/2 left-6 right-6 md:left-20 md:right-0 invisible pointer-events-auto group cursor-default">
               <h1 className="text-3xl md:text-5xl font-medium text-[#1a1a1a] leading-tight tracking-tight transition-colors duration-300">
                 {h[i].line1} <br />
                 <span className="text-[#999] transition-colors duration-300 group-hover:text-[#ff5533]">{h[i].line2}</span>
@@ -167,7 +167,7 @@ export function ProductScrollSection({
           ))}
 
           {/* Phase 5 Text with the requested Black Bar */}
-          <div ref={(el) => addToTextRefs(el, 4)} className="absolute top-1/2 -translate-y-1/2 left-6 right-6 md:left-20 md:right-0 invisible pointer-events-auto group cursor-default flex items-stretch gap-4 md:gap-6">
+          <div ref={(el) => addToTextRefs(el, 4)} className="absolute top-[40%] md:top-1/2 -translate-y-1/2 left-6 right-6 md:left-20 md:right-0 invisible pointer-events-auto group cursor-default flex items-stretch gap-4 md:gap-6">
             <div className="w-1.5 bg-[#1a1a1a] rounded-full shrink-0"></div>
             <div>
               <h1 className="text-4xl md:text-6xl font-medium text-[#1a1a1a] mb-2 md:mb-4 leading-tight tracking-tight transition-colors duration-300">
@@ -188,22 +188,24 @@ export function ProductScrollSection({
             
             {/* Wireframes (Phases 1-4) */}
             {wireframes.map((src, index) => (
-              <img 
-                key={src}
-                ref={(el) => addToImgRefs(el, index)}
-                src={src} 
-                alt={`Enimi Phase ${index + 1}`} 
-                className="absolute w-full h-auto object-contain z-10 invisible pointer-events-none mix-blend-multiply rounded-[40px]"
-              />
+              <div key={src} className="absolute inset-0 flex items-start pt-[2%] md:pt-0 md:items-center justify-center pointer-events-none z-10">
+                <img 
+                  ref={(el) => addToImgRefs(el, index)}
+                  src={src} 
+                  alt={`Enimi Phase ${index + 1}`} 
+                  className="w-[85%] md:w-full max-w-[350px] md:max-w-none h-auto object-contain invisible mix-blend-multiply rounded-[40px]"
+                />
+              </div>
             ))}
 
             {/* PINS FOR PHASES 1-4 */}
             
             {/* Pin 1 - Top Right (Line goes left, then down) */}
-            <div 
-              ref={(el) => addToPinRefs(el, 0)} 
-              className="absolute top-[80%] md:top-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-[90vw] max-w-[340px] md:w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
-            >
+            <div className="absolute left-1/2 -translate-x-1/2 top-[65%] md:left-auto md:translate-x-0 md:-right-[5%] md:top-[10%] z-20 pointer-events-none w-[75vw] max-w-[280px] md:w-auto">
+              <div 
+                ref={(el) => addToPinRefs(el, 0)} 
+                className="relative scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-3 md:p-4 rounded-2xl shadow-2xl w-full md:w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              >
               <div className="flex items-start gap-3">
                 <div className="mt-1 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -218,7 +220,7 @@ export function ProductScrollSection({
               </div>
               
               {/* Mobile Line */}
-              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[40px] bg-[#ff5533]">
+              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[100px] bg-[#ff5533]">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff5533] -translate-y-1/2"></div>
               </div>
               
@@ -228,12 +230,14 @@ export function ProductScrollSection({
                 <div className="absolute left-[-2.5px] top-[80px] w-1.5 h-1.5 rounded-full bg-[#ff5533]"></div>
               </div>
             </div>
+            </div>
 
             {/* Pin 2 - Bottom Right (Line goes left, then up) */}
-            <div 
-              ref={(el) => addToPinRefs(el, 1)} 
-              className="absolute top-[80%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-[90vw] max-w-[340px] md:w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
-            >
+            <div className="absolute left-1/2 -translate-x-1/2 top-[65%] md:left-auto md:translate-x-0 md:-right-[5%] md:top-auto md:bottom-[10%] z-20 pointer-events-none w-[75vw] max-w-[280px] md:w-auto">
+              <div 
+                ref={(el) => addToPinRefs(el, 1)} 
+                className="relative scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-3 md:p-4 rounded-2xl shadow-2xl w-full md:w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              >
               <div className="flex items-start gap-3">
                 <div className="mt-1 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -249,7 +253,7 @@ export function ProductScrollSection({
               </div>
               
               {/* Mobile Line */}
-              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[40px] bg-[#ff5533]">
+              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[100px] bg-[#ff5533]">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff5533] -translate-y-1/2"></div>
               </div>
               
@@ -259,12 +263,14 @@ export function ProductScrollSection({
                 <div className="absolute left-[-2.5px] bottom-[80px] w-1.5 h-1.5 rounded-full bg-[#ff5533]"></div>
               </div>
             </div>
+            </div>
 
             {/* Pin 3 - Bottom Right (Line goes left, then up) */}
-            <div 
-              ref={(el) => addToPinRefs(el, 2)} 
-              className="absolute top-[80%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-[90vw] max-w-[340px] md:w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
-            >
+            <div className="absolute left-1/2 -translate-x-1/2 top-[65%] md:left-auto md:translate-x-0 md:-right-[5%] md:top-auto md:bottom-[10%] z-20 pointer-events-none w-[75vw] max-w-[280px] md:w-auto">
+              <div 
+                ref={(el) => addToPinRefs(el, 2)} 
+                className="relative scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-3 md:p-4 rounded-2xl shadow-2xl w-full md:w-64 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              >
               <div className="flex items-start gap-3 mb-3">
                 <div className="mt-0.5 bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -301,7 +307,7 @@ export function ProductScrollSection({
               )}
               
               {/* Mobile Line */}
-              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[40px] bg-[#ff5533]">
+              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[100px] bg-[#ff5533]">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff5533] -translate-y-1/2"></div>
               </div>
               
@@ -311,12 +317,14 @@ export function ProductScrollSection({
                 <div className="absolute left-[-2.5px] bottom-[80px] w-1.5 h-1.5 rounded-full bg-[#ff5533]"></div>
               </div>
             </div>
+            </div>
 
             {/* Pin 4 - Bottom Right (Line goes left, then up) */}
-            <div 
-              ref={(el) => addToPinRefs(el, 3)} 
-              className="absolute top-[80%] md:top-auto md:bottom-[10%] left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 md:-right-[5%] scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-4 rounded-2xl shadow-2xl z-20 w-[90vw] max-w-[340px] md:w-56 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
-            >
+            <div className="absolute left-1/2 -translate-x-1/2 top-[65%] md:left-auto md:translate-x-0 md:-right-[5%] md:top-auto md:bottom-[10%] z-20 pointer-events-none w-[75vw] max-w-[280px] md:w-auto">
+              <div 
+                ref={(el) => addToPinRefs(el, 3)} 
+                className="relative scale-100 origin-center md:origin-right bg-[#1a1a1a] text-white p-3 md:p-4 rounded-2xl shadow-2xl w-full md:w-56 invisible pointer-events-auto group cursor-default border border-white/5 hover:border-[#ff5533]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,85,51,0.2)] transition-all duration-500"
+              >
               <div className="flex items-center gap-2 mb-2">
                  <div className="bg-[#ff5533]/20 text-[#ff5533] p-1.5 rounded-lg group-hover:bg-[#ff5533] group-hover:text-white transition-colors duration-500">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -339,7 +347,7 @@ export function ProductScrollSection({
               )}
               
               {/* Mobile Line */}
-              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[40px] bg-[#ff5533]">
+              <div className="md:hidden absolute bottom-full left-1/2 -translate-x-1/2 w-[1px] h-[100px] bg-[#ff5533]">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#ff5533] -translate-y-1/2"></div>
               </div>
               
@@ -349,23 +357,26 @@ export function ProductScrollSection({
                 <div className="absolute left-[-2.5px] bottom-[80px] w-1.5 h-1.5 rounded-full bg-[#ff5533]"></div>
               </div>
             </div>
+            </div>
 
             {/* Phase 5: Final Logo Reveal */}
-            <div 
-              ref={finalLogoRef}
-              className="absolute w-[60%] h-auto opacity-0 group cursor-pointer z-30 pointer-events-auto"
-            >
-               <img 
-                 src={finalLogo} 
-                 alt={`${productName} Final Reveal`} 
-                 className="w-full h-auto object-contain transition-all duration-300 ease-in-out group-hover:opacity-0 shadow-2xl rounded-3xl"
-               />
-               <img 
-                 src={finalLogoHover} 
-                 alt={`${productName} Final Reveal Active`} 
-                 style={hoverImageTransform ? { transform: hoverImageTransform } : undefined}
-                 className="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100 shadow-2xl rounded-3xl"
-               />
+            <div className="absolute inset-0 flex items-start pt-[2%] md:pt-0 md:items-center justify-center pointer-events-none z-30">
+              <div 
+                ref={finalLogoRef}
+                className="relative w-[85%] md:w-[60%] max-w-[350px] md:max-w-none h-auto opacity-0 group cursor-pointer pointer-events-auto"
+              >
+                 <img 
+                   src={finalLogo} 
+                   alt={`${productName} Final Reveal`} 
+                   className="w-full h-auto object-contain transition-all duration-300 ease-in-out group-hover:opacity-0 shadow-2xl rounded-3xl"
+                 />
+                 <img 
+                   src={finalLogoHover} 
+                   alt={`${productName} Final Reveal Active`} 
+                   style={hoverImageTransform ? { transform: hoverImageTransform } : undefined}
+                   className="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100 shadow-2xl rounded-3xl"
+                 />
+              </div>
             </div>
 
           </div>
