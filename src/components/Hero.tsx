@@ -274,6 +274,10 @@ export default function Hero() {
             loop
             muted
             playsInline
+            controls={false}
+            disablePictureInPicture
+            disableRemotePlayback
+            controlsList="nodownload nofullscreen noremoteplayback"
             className="absolute inset-0 z-0 object-contain w-full h-full pointer-events-none"
           />
 

@@ -37,9 +37,18 @@ export function useSmoothScroll() {
 
     gsap.ticker.lagSmoothing(0);
 
+    // Setup ResizeObserver to detect DOM height changes (like late image loads) and refresh ScrollTrigger
+    const resizeObserver = new ResizeObserver(() => {
+      ScrollTrigger.refresh();
+    });
+    
+    // Observe body for any height changes
+    resizeObserver.observe(document.body);
+
     return () => {
       lenis.destroy();
       gsap.ticker.remove((time) => lenis.raf(time * 1000));
+      resizeObserver.disconnect();
     };
   }, []);
 
